@@ -1,0 +1,16 @@
+.col-sm-img{
+	
+	width:10rem;
+	height:7rem;
+	border-radius: 8rem;
+	float:left;
+
+	
+}
+
+.profile-title{
+	color: black;
+	font-family: "Agency FB";
+	font-size: medium;
+
+}
