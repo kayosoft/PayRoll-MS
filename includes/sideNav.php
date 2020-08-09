@@ -16,24 +16,12 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="##">
+              <a class="nav-link" href="soon.php">
                 <span class="menu-title">Dashboard</span>
                 <i class="mdi mdi-home menu-icon"></i>
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" data-toggle="collapse" href="#company" aria-expanded="false" aria-controls="company">
-                <span class="menu-title">Company</span>
-                <i class="menu-arrow"></i>
-                <i class="mdi mdi-crosshairs-gps menu-icon"></i>
-              </a>
-              <div class="collapse" id="company">
-                <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="#">Company Detail</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="#">Departments</a></li>
-                </ul>
-              </div>
-            </li>
+            
              <li class="nav-item">
               <a class="nav-link" data-toggle="collapse" href="#employee" aria-expanded="false" aria-controls="employee">
                 <span class="menu-title">Employees</span>
@@ -42,45 +30,70 @@
               </a>
               <div class="collapse" id="employee">
                 <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="registerEmployee.php">Add Employees</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="register.php">Add Employees</a></li>
                   <li class="nav-item"> <a class="nav-link" href="employee.php">Manage Employees</a></li>
                 </ul>
               </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link" data-toggle="collapse" href="#salary" aria-expanded="false" aria-controls="salary">
-                <span class="menu-title">Salary</span>
-                <i class="menu-arrow"></i>
-                <i class="mdi mdi-medical-bag menu-icon"></i>
-              </a>
-              <div class="collapse" id="salary">
-                <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="#"> Salary Scale </a></li>
-                  <li class="nav-item"> <a class="nav-link" href="#"> Allowances </a></li>
-                  <li class="nav-item"> <a class="nav-link" href="#"> Payroll </a></li>
-                </ul>
-              </div>
-            </li>
-             <li class="nav-item">
               <a class="nav-link" data-toggle="collapse" href="#loan" aria-expanded="false" aria-controls="loan">
-                <span class="menu-title">Loans</span>
+                <span class="menu-title">Loans & Advances</span>
                 <i class="menu-arrow"></i>
-                <i class="mdi mdi-file menu-icon"></i>
+                <i class="mdi mdi-book-minus menu-icon"></i>
               </a>
               <div class="collapse" id="loan">
                 <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="#"> View Loans </a></li>
-                  <li class="nav-item"> <a class="nav-link" href="#"> Manage Loans </a></li>
+                  <li class="nav-item"> <a class="nav-link" href="soon.php"> View Loans </a></li>
+                  <li class="nav-item"> <a class="nav-link" href="soon.php"> Manage Loans </a></li>
                 </ul>
               </div>
             </li>
-           
             <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span class="menu-title">Monthly Reports</span>
-                <i class="mdi mdi-chart-bar menu-icon"></i>
+              <a class="nav-link" href="soon.php">
+                <span class="menu-title">Monthly Transactions</span>
+                <i class="mdi mdi-cash-multiple menu-icon"></i>
               </a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="soon.php">
+                <span class="menu-title">Compute PayRoll</span>
+                <i class="mdi mdi-book-open menu-icon"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="collapse" href="#report" aria-expanded="false" aria-controls="report">
+                <span class="menu-title">Reports</span>
+                <i class="menu-arrow"></i>
+                <i class="mdi mdi-file menu-icon"></i>
+              </a>
+              <div class="collapse" id="report">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item"> <a class="nav-link" href="soon.php"> Monthly Report </a></li>
+                  <li class="nav-item"> <a class="nav-link" href="soon.php"> Allowances </a></li>
+                  <li class="nav-item"> <a class="nav-link" href="soon.php"> NSSF </a></li>
+                  <li class="nav-item"> <a class="nav-link" href="soon.php"> Annual Report </a></li>
+                </ul>
+              </div>
+            </li>
+
+            <li class="nav-item">
+             
+                <span class="menu-title"></span>
+               
+              
+            </li>
+
+
+            <li class="nav-item">
+              <a class="nav-link" href="soon.php">
+                <span class="menu-title">Support</span>
+               
+              </a>
+            </li>
+             
+            
+           
+            
            
             
           

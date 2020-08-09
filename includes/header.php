@@ -40,7 +40,7 @@ if($_SESSION['userID'])
                   <span class="availability-status online"></span>
                 </div>
                 <div class="nav-profile-text">
-                  <p class="mb-1 text-black"><?php echo $row['firstName']; ?></p>
+                  <p class="mb-1 text-black" style="font-size: 20px;"><?php echo $row['firstName']; ?></p>
                 </div>
               </a>
               <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
@@ -53,7 +53,7 @@ if($_SESSION['userID'])
             </li>
             <li class="nav-item d-none d-lg-block full-screen-link" title="View fullscreen">
               <a class="nav-link">
-                <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
+                <i class="mdi mdi-fullscreen" id="fullscreen-button" ></i>
               </a>
             </li>
             <li class="nav-item dropdown">
@@ -99,49 +99,85 @@ if($_SESSION['userID'])
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
-                <i class="mdi mdi-bell-outline"></i>
+                <i class="mdi mdi-settings"></i>
                 <span class="count-symbol bg-danger"></span>
               </a>
               <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
-                <h6 class="p-3 mb-0">Notifications</h6>
+                <h6 class="p-3 mb-0">System Settings</h6>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item preview-item">
+                <a class="dropdown-item preview-item" href="users.php">
                   <div class="preview-thumbnail">
                     <div class="preview-icon bg-success">
-                      <i class="mdi mdi-calendar"></i>
+                      <i class="mdi mdi-account-multiple"></i>
                     </div>
                   </div>
                   <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
-                    <h6 class="preview-subject font-weight-normal mb-1">Event today</h6>
-                    <p class="text-gray ellipsis mb-0"> Just a reminder that you have an event today </p>
+                    <h6 class="preview-subject font-weight-normal mb-1">Manage Users</h6>
+                    <p class="text-gray ellipsis mb-0"> Add and update users details </p>
                   </div>
                 </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item preview-item">
+                <a class="dropdown-item preview-item" href="departments.php">
                   <div class="preview-thumbnail">
                     <div class="preview-icon bg-warning">
-                      <i class="mdi mdi-settings"></i>
+                      <i class="mdi mdi-city"></i>
                     </div>
                   </div>
                   <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
-                    <h6 class="preview-subject font-weight-normal mb-1">Settings</h6>
-                    <p class="text-gray ellipsis mb-0"> Update dashboard </p>
+                    <h6 class="preview-subject font-weight-normal mb-1">Manage Departments</h6>
+                    <p class="text-gray ellipsis mb-0"> Add department details </p>
                   </div>
                 </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item preview-item">
+                <a class="dropdown-item preview-item" href="banks.php">
                   <div class="preview-thumbnail">
                     <div class="preview-icon bg-info">
-                      <i class="mdi mdi-link-variant"></i>
+                      <i class="mdi mdi-cards"></i>
                     </div>
                   </div>
                   <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
-                    <h6 class="preview-subject font-weight-normal mb-1">Launch Admin</h6>
-                    <p class="text-gray ellipsis mb-0"> New admin wow! </p>
+                    <h6 class="preview-subject font-weight-normal mb-1">Manage Banks</h6>
+                    <p class="text-gray ellipsis mb-0"> Banks </p>
                   </div>
                 </a>
                 <div class="dropdown-divider"></div>
-                <h6 class="p-3 mb-0 text-center">See all notifications</h6>
+                <a class="dropdown-item preview-item" href="soon.php">
+                  <div class="preview-thumbnail">
+                    <div class="preview-icon bg-info">
+                      <i class="mdi mdi-cash-usd"></i>
+                    </div>
+                  </div>
+                  <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+                    <h6 class="preview-subject font-weight-normal mb-1">Manage Salary</h6>
+                    <p class="text-gray ellipsis mb-0"> Salaries </p>
+                  </div>
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item preview-item" href="soon.php">
+                  <div class="preview-thumbnail">
+                    <div class="preview-icon bg-info">
+                      <i class="mdi mdi-book-minus"></i>
+                    </div>
+                  </div>
+                  <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+                    <h6 class="preview-subject font-weight-normal mb-1">Manage PAYE</h6>
+                    <p class="text-gray ellipsis mb-0"> Taxes </p>
+                  </div>
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item preview-item" href="soon.php">
+                  <div class="preview-thumbnail">
+                    <div class="preview-icon bg-info">
+                      <i class="mdi mdi-city"></i>
+                    </div>
+                  </div>
+                  <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+                    <h6 class="preview-subject font-weight-normal mb-1">Company Details</h6>
+                    <p class="text-gray ellipsis mb-0"> Details </p>
+                  </div>
+                </a>
+                <div class="dropdown-divider"></div>
+              
               </div>
             </li>
             <li class="nav-item nav-logout d-none d-lg-block">

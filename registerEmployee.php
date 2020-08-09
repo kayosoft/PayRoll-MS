@@ -70,17 +70,18 @@
 
         <div class="container-fluid page-body-wrapper">
           <?php include('includes/sideNav.php');?>
-          <div class="main-panel">
+          <div class="main-panel" style="margin-left: 230px;">
             <div class="content-wrapper">
 
                 <div class="col-12">
                   <div class="card">
                     <div class="card-body">
                       <h4 class="card-title">Register Employee</h4>
+                      <p>Fill all form field to go to next step</p>
                       <div class="row justify-content-center">
-                        
-                  <h2 id="heading">Sign Up Your User Account</h2>
-                  <p>Fill all form field to go to next step</p>
+
+              
+                  
                        <form id="msform" class="form-sample" method="post" action="registerEmployee.php">
                       <!-- progressbar -->
                       <ul id="progressbar">
@@ -93,6 +94,7 @@
                           <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
                       </div> <br> <!-- fieldsets -->
                       <fieldset>
+                        <div class="form-card">
                         <div class="row">
                                   <div class="col-7">
                                       <h2 class="fs-title">Account Information:</h2>
@@ -100,7 +102,7 @@
                                   <div class="col-5">
                                       <h2 class="steps">Step 1 - 4</h2>
                                   </div>
-                              </div> 
+                        </div> 
                         <div class="row">
                           <div class="col-md-6">
                             <div class="form-group row">
@@ -188,18 +190,8 @@
                             </div>
                           </div>
                         </div>
-                 
-                          <div class="form-card">
-                              <div class="row">
-                                  <div class="col-7">
-                                      <h2 class="fs-title">Account Information:</h2>
-                                  </div>
-                                  <div class="col-5">
-                                      <h2 class="steps">Step 1 - 4</h2>
-                                  </div>
-                              </div> 
-                                     
-                          </div> <input type="button" name="next" class="next action-button" value="Next" />
+                        </div>
+                        <input type="button" name="next" class="next action-button" value="Next" />
                       </fieldset>
                       <fieldset>
                           <div class="form-card">
