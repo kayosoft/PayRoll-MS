@@ -369,7 +369,7 @@
         <script src="assets/js/file-upload.js"></script>
         <!-- End custom js for this page --> 
 
-        <!-- JS -->
+        <!-- JS register form -->
         <script src="pages/vendor/jquery/jquery.min.js"></script>
         <script src="pages/vendor/jquery-validation/dist/jquery.validate.min.js"></script>
         <script src="pages/vendor/jquery-validation/dist/additional-methods.min.js"></script>
@@ -391,6 +391,7 @@ $(function() {
     var years = moment().diff(start, 'years');
     // alert("You are " + years + " years old!");
   });
+
 });
 </script>
     </body>

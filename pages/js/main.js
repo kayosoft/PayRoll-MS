@@ -90,6 +90,7 @@
         },
         onFinished: function (event, currentIndex)
         {
+            
             alert('Sumited');
         },
         // onInit : function (event, currentIndex) {
@@ -190,3 +191,4 @@
     });
         
 })(jQuery);
+
