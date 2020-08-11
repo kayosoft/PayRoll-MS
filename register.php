@@ -32,7 +32,7 @@
       echo"<script>alert('Employee Succssfully register');</script>";
       }
       ?>
-    ?>
+    
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -48,7 +48,8 @@
         <!-- Main css -->
         <link rel="stylesheet" href="pages/css/style.css">
 
-
+        <!-- Date picker -->
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
 
 
@@ -108,20 +109,9 @@
 
                             <div class="form-row">
                                 <div class="form-date">
-                                    <label for="birth_date" class="form-label">Date of birth</label>
+                                    <label for="birth_date" class="form-label required">Date of birth</label>
                                     <div class="form-date-group">
-                                        <div class="form-date-item">
-                                            <select id="birth_date" name="birth_date"></select>
-                                            <span class="select-icon"><i class="ti-angle-down"></i></span>
-                                        </div>
-                                        <div class="form-date-item">
-                                            <select id="birth_month" name="birth_month"></select>
-                                            <span class="select-icon"><i class="ti-angle-down"></i></span>
-                                        </div>
-                                        <div class="form-date-item">
-                                            <select id="birth_year" name="birth_year"></select>
-                                            <span class="select-icon"><i class="ti-angle-down"></i></span>
-                                        </div>
+                                        <input type="text" name="birth_date" value="01/01/2002" id="birth_date" />
                                     </div>
                                 </div>
         
@@ -136,6 +126,8 @@
                                     </div>
                                 </div>
                             </div>
+
+                        
 
                             <!-- <div class="form-group">
                                 <label for="user_name" class="form-label required">User name</label>
@@ -204,8 +196,8 @@
                                         <select name="job" id="job">
                                             <option value="">Select Job Title</option>
 
-                                            <option value="A1">A2</option>
-                                            <option value="A2">A3</option>
+                                            <option value="A1">Accountant</option>
+                                            <option value="A2">ICT Manager</option>
                                         </select>
                             </div>
 
@@ -267,10 +259,37 @@
                                 <span class="step-heading">Payment Informaltion: </span>
                                 <span class="step-number">Step 4 / 4</span>
                             </legend>
-                            <div class="form-group">
-                                <label for="bank_name" class="form-label required">Bank Name</label>
-                                <input type="text" name="bank_name" id="bank_name" />
-                            </div>
+                            <div class="form-select form-group">
+                                    <label for="bank_name" class="form-label required">Bank Name</label>
+                                    <div class="select-list">
+                                        <select name="bank_name" id="bank_name">
+                                            <option value="">Select Bank</option>
+                                            
+                                                          <?php   
+    $aid=$_SESSION['userID'];
+    $ret="select * from banks";
+    $stmt= $mysqli->prepare($ret) ;
+    //$stmt->bind_param('i',$aid);
+    $stmt->execute() ;
+    $res=$stmt->get_result();
+    
+    while($row=$res->fetch_object())
+          {
+
+
+            ?>
+    
+        <option value="12"><?php echo $row->bankName;?></option>
+                                          
+    
+
+                                           
+                                        <?php
+    
+                                         } ?>
+                                        </select>
+                                    </div>
+                                </div>
 
                             <div class="form-group">
                                 <label for="account_number" class="form-label required">Account Number</label>
@@ -301,8 +320,8 @@
                                     <div class="select-list">
                                         <select name="salary" id="salary">
                                             <option value="">Select salary</option>
-                                            <option value="A1">A2</option>
-                                            <option value="A2">A3</option>
+                                            <option value="A1">U2</option>
+                                            <option value="A2">U3</option>
                                         </select>
                                     </div>
                                 </div>
@@ -349,5 +368,22 @@
         <script src="pages/vendor/jquery-steps/jquery.steps.min.js"></script>
         <script src="pages/vendor/minimalist-picker/dobpicker.js"></script>
         <script src="pages/js/main.js"></script>
+
+        <!-- Date picker -->
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+        <script>
+$(function() {
+  $('input[name="birth_date"]').daterangepicker({
+    singleDatePicker: true,
+    showDropdowns: true,
+    minYear: 1970,
+    maxYear: parseInt(moment().format('YYYY'),10)
+  }, function(start, end, label) {
+    var years = moment().diff(start, 'years');
+    // alert("You are " + years + " years old!");
+  });
+});
+</script>
     </body>
     </html>
