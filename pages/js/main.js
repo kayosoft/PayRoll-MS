@@ -12,7 +12,7 @@
             last_name : {
                 required: true,
             },
-            user_name : {
+            other_name : {
                 required: true,
             },
             password : {
@@ -42,14 +42,14 @@
             bank_name: {
                 required: true,
             },
-            holder_name: {
+            bank_account: {
                 required: true,
             },
-            card_number: {
+            nin: {
                 required: true,
                 number: true,
             },
-            cvc: {
+            tin: {
                 required: true,
             },
         },

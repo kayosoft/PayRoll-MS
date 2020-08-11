@@ -5,25 +5,33 @@
     check_login();
 
 
-    if(isset($_POST['submit']))
+    if(isset($_POST['Submit']))
       {
 
-      $fname=$_POST['firstName'];
-      $sname=$_POST['surName'];
-      $mname=$_POST['otherName'];
+      $fname=$_POST['first_name'];
+      $sname=$_POST['last_name'];
+      $mname=$_POST['other_name'];
+      $dob = $_POST['birth_date'];
       $gender=$_POST['gender'];
-      $dob = $_POST['dob'];
-      $nin = $_POST['nin'];
-      $ssNo = $_POST['ssNo'];
-      $bankAcc = $_POST['bankAcc'];
-      $tin = $_POST['tin'];
-      $profile = $_POST['profile'];
-      $contactno=$_POST['tell'];
       $emailid=$_POST['email'];
+      $contactno=$_POST['phone'];
+      $address=$_POST['address'];
+      $empID = $_POST['employee_id'];
+      $job = $_POST['job'];
+      $dept = $_POST['dept'];
+      $nin = $_POST['nin'];
+      $tin = $_POST['tin'];
+      $ssNo = $_POST['ssno'];
+      $bank_name = $_POST['bank_name'];
+      $bankAcc = $_POST['bank_account'];
+      $start_date = $_POST['start_date'];
+      // $profile = $_POST['profile'];
+      $salary=$_POST['salary'];
+      
 
-      $query="INSERT  INTO  employees(firstName,surName,otherName,gender,tellNo,email,NIN,ssNo,DoB,TIN) values(?,?,?,?,?,?,?,?,?,?)";
+      $query="INSERT  INTO  employees(empNo,firstName,surName,otherName,gender,tellNo,email,NIN,ssNo,DoB,TIN,jobCode,deptID,bankAccount,bankCode,sID) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
       $stmt = $mysqli->prepare($query);
-      $rc=$stmt->bind_param('sssssssisi',$fname,$sname,$mname,$gender,$contactno,$emailid,$nin,$ssNo,$dob,$tin);
+      $rc=$stmt->bind_param('sssssssssssssssi',$empID,$fname,$sname,$mname,$gender,$contactno,$emailid,$nin,$ssNo,$dob,$tin,$job,$dept,$bankAcc,$bank_name,$salary);
       $stmt->execute();
       $stmt->close();
 
@@ -83,7 +91,7 @@
 
             <div class="container">
                 <h2>REGISTER EMPLYEE ACCOUNT</h2>
-                <form method="POST" id="signup-form" class="signup-form" action="soon.php">
+                <form method="POST" id="signup-form" class="signup-form" action="register.php">
                         <h3>
                             <span class="icon"><i class="ti-user"></i></span>
                             <span class="title_text">Personal</span>
@@ -104,7 +112,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="other_name" class="form-label required">Other name</label>
-                                <input type="text" name="other_name" id="first_name" />
+                                <input type="text" name="other_name" id="other_name" />
                             </div>
 
                             <div class="form-row">
@@ -119,7 +127,7 @@
                                     <label for="gender" class="form-label">Gender</label>
                                     <div class="select-list">
                                         <select name="gender" id="gender">
-                                            <option value="">Male</option>
+                                            <option value="">Select Gender</option>
                                             <option value="Male">Male</option>
                                             <option value="Female">Female</option>
                                         </select>
@@ -221,7 +229,7 @@
 
             ?>
     
-        <option value=""><?php echo $row->deptName;?></option>
+        <option value="<?php echo $row->deptID;?>"><?php echo $row->deptName;?></option>
                                           
     
 
@@ -279,7 +287,7 @@
 
             ?>
     
-        <option value="12"><?php echo $row->bankName;?></option>
+        <option value="<?php echo $row->bankCode;?>"><?php echo $row->bankName;?></option>
                                           
     
 
@@ -320,8 +328,8 @@
                                     <div class="select-list">
                                         <select name="salary" id="salary">
                                             <option value="">Select salary</option>
-                                            <option value="A1">U2</option>
-                                            <option value="A2">U3</option>
+                                            <option value="2">U2</option>
+                                            <option value="3">U3</option>
                                         </select>
                                     </div>
                                 </div>
