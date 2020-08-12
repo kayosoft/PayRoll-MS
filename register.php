@@ -5,14 +5,14 @@
     check_login();
 
 
-    if(isset($_POST['Submit']))
+    if(isset($_POST['submit']))
       {
 
       $fname=$_POST['first_name'];
       $sname=$_POST['last_name'];
       $mname=$_POST['other_name'];
       $dob = $_POST['birth_date'];
-      $gender=$_POST['gender'];
+      $gender=$_POST['gender_type'];
       $emailid=$_POST['email'];
       $contactno=$_POST['phone'];
       $address=$_POST['address'];
@@ -23,21 +23,22 @@
       $tin = $_POST['tin'];
       $ssNo = $_POST['ssno'];
       $bank_name = $_POST['bank_name'];
-      $bankAcc = $_POST['bank_account'];
-      $start_date = $_POST['start_date'];
+      $bankAcc = $_POST['account_number'];
+      // $start_date = $_POST['start_date'];
       // $profile = $_POST['profile'];
       $salary=$_POST['salary'];
       
 
-      $query="INSERT  INTO  employees(empNo,firstName,surName,otherName,gender,tellNo,email,NIN,ssNo,DoB,TIN,jobCode,deptID,bankAccount,bankCode,sID) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+      $query="INSERT  INTO  employees(empNo,firstName,surName,otherName,gender,tellNo,email,NIN,ssNo,DoB,TIN,deptID,bankAccount,bankCode) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
       $stmt = $mysqli->prepare($query);
-      $rc=$stmt->bind_param('sssssssssssssssi',$empID,$fname,$sname,$mname,$gender,$contactno,$emailid,$nin,$ssNo,$dob,$tin,$job,$dept,$bankAcc,$bank_name,$salary);
+      $rc=$stmt->bind_param('ssssssssssssss',$empID,$fname,$sname,$mname,$gender,$contactno,$emailid,$nin,$ssNo,$dob,$tin,$dept,$bankAcc,$bank_name);
       $stmt->execute();
       $stmt->close();
-
+      if($rc){
 
 
       echo"<script>alert('Employee Succssfully register');</script>";
+      }
       }
       ?>
     
@@ -46,7 +47,6 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    		<meta name="author" content="colorlib.com">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Sign Up Employee</title>
 
@@ -91,7 +91,8 @@
 
             <div class="container">
                 <h2>REGISTER EMPLYEE ACCOUNT</h2>
-                <form method="POST" id="signup-form" class="signup-form" action="register.php">
+
+                <form id="signup-form" class="signup-form" method="post" action="register.php">
                         <h3>
                             <span class="icon"><i class="ti-user"></i></span>
                             <span class="title_text">Personal</span>
@@ -123,16 +124,29 @@
                                     </div>
                                 </div>
         
-                                <div class="form-select">
+                                <!-- <div class="form-select">
                                     <label for="gender" class="form-label">Gender</label>
                                     <div class="select-list">
-                                        <select name="gender" id="gender">
+                                        <select name="gender_type" id="gender">
                                             <option value="">Select Gender</option>
                                             <option value="Male">Male</option>
                                             <option value="Female">Female</option>
                                         </select>
                                     </div>
-                                </div>
+                                </div> -->
+                                <div class="form-select form-group">
+                                    <label for="gender_type" class="form-label required">Gender</label>
+                                    <div class="select-list">
+                                        <select name="gender_type" id="gender_type">
+                                            <option value="">Select Gender</option>
+
+    
+                                            <option value="Male">Male</option>
+                                            <option value="Female">Female</option>
+                                            
+                                    </select>
+                            </div>
+
                             </div>
 
                         
@@ -146,6 +160,9 @@
                                 <label for="password" class="form-label required">Password</label>
                                 <input type="password" name="password" id="password" />
                             </div> -->
+                           
+                            <!-- <input type="button" name="previous" class="previous btn btn-default" value="Previous" />
+                            <input type="submit" name="submit" class="submit btn btn-success" value="Submit" /> -->
                         </fieldset>
 
                         <h3>
@@ -335,8 +352,9 @@
                                 </div>
                             </div>
 
-                           
+                           <input type="submit" name="submit" value="Reg">
                         </fieldset>
+                        
                 </form>
             </div>
         </div>
