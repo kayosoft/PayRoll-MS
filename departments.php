@@ -24,7 +24,7 @@
 
   echo"<script>alert('New Department is Added');</script>";
   }
-  ?>
+  
     ?>
     <!DOCTYPE html>
     <html lang="en">

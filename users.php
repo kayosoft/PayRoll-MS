@@ -3,6 +3,29 @@
     include('includes/db_connect.php');
     include('includes/checklogin.php');
     check_login();
+
+    if(isset($_POST['addUser']))
+      {
+
+      $fname=$_POST['firstName'];
+      $lname=$_POST['lastName'];
+      $emailid=$_POST['emailID'];
+      $contactno=$_POST['phone'];
+      $access=$_POST['access'];
+      
+      
+
+      $query="INSERT  INTO  users(firstName,lastName,password,email,tellNo,accessLevel) values(?,?,?,?,?,?)";
+      $stmt = $mysqli->prepare($query);
+      $rc=$stmt->bind_param('ssssss',$fname,$lname,$fname,$emailid,$contactno,$access);
+      $stmt->execute();
+      $stmt->close();
+      if($rc){
+
+
+      echo"<script>alert('User Succssfully register');</script>";
+      }
+      }
     ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -89,33 +112,36 @@
                 <div class="card">
                   <div class="card-body">
                     
-                    <form class="forms-sample">
+                    <form class="forms-sample" method="post" action="users.php">
                       <div class="form-group">
                         <label for="exampleInputName1">FirstName</label>
-                        <input type="text" class="form-control" id="exampleInputName1" placeholder="FirstName">
+                        <input type="text" class="form-control" id="exampleInputName1" placeholder="FirstName" name="firstName">
                       </div>
                       <div class="form-group">
                         <label for="exampleInputName1">LastName</label>
-                        <input type="text" class="form-control" id="exampleInputName1" placeholder="LastName">
+                        <input type="text" class="form-control" id="exampleInputName1" placeholder="LastName" name="lastName">
                       </div>
                       <div class="form-group">
                         <label for="exampleInputEmail3">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Email">
+                        <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Email" name="emailID">
                       </div>
                       <div class="form-group">
                         <label for="exampleInputPassword4">TellNo.</label>
-                        <input type="text" class="form-control" id="exampleInputPassword4" placeholder="Tell">
+                        <input type="text" class="form-control" id="exampleInputPassword4" placeholder="Tell" name="phone">
                       </div>
                       <div class="form-group">
                         <label for="access">Access Level</label>
-                        <select class="form-control" id="access">
-                          <option>A1</option>
-                          <option>A2</option>
+                        <select class="form-control" id="access" name="access">
+
+                          <option value="">Select Access</option>
+                          <option value="PayRoll Master">A1</option>
+                          <option value="Receptionist">A2</option>
+                          <option value="Data Entrant">A3</option>
                         </select>
                       </div>
                       <div class="form-group">
                         <label>File upload</label>
-                        <input type="file" name="img[]" class="file-upload-default">
+                        <input type="file" name="img[]" class="file-upload-default" name="profile">
                         <div class="input-group col-xs-12">
                           <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
                           <span class="input-group-append">
@@ -125,7 +151,7 @@
                       </div>
                       
                       
-                      <button type="submit" class="btn btn-gradient-primary mr-2">Submit</button>
+                      <button type="submit" class="btn btn-gradient-primary mr-2" name="addUser">Submit</button>
                       <button class="btn btn-light">Cancel</button>
                     </form>
                   </div>
@@ -167,7 +193,7 @@
                       <tbody>
                         <?php 
   $aid=$_SESSION['userID'];
-  $ret="SELECT * FROM users";
+  $ret="SELECT * FROM users where userID != $aid";
   $stmt= $mysqli->prepare($ret) ;
   //$stmt->bind_param('i',$aid);
   $stmt->execute() ;
