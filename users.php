@@ -207,7 +207,7 @@
   <td><?php echo $row->email;?></td>
   <td><?php echo $row->tellNo;?></td>
   <td><?php echo $row->accessLevel;?></td>
-  <td></td>
+  <td><a href="##" class="btn btn-gradient-primary btn-icon"><i class="mdi mdi-pencil-outline icon-lg"></i></a></td>
 
                       </tr>
                     <?php

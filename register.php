@@ -352,7 +352,7 @@
                                 </div>
                             </div>
 
-                           <input type="submit" name="submit" value="Reg">
+                           <input type="submit" name="submit" value="Submit Now">
                         </fieldset>
                         
                 </form>

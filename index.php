@@ -31,7 +31,7 @@ $mysqli->query($log);
 
 if($log)
 {
-header("location:registerEmployee.php");
+header("location:dashboard.php");
         }
 }
         else

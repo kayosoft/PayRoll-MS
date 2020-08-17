@@ -74,7 +74,7 @@
         labels: {
             previous : 'Previous',
             next : 'Next',
-            finish : 'Submit',
+            finish : 'Cancel',
             current : ''
         },
         titleTemplate : '<span class="title">#title#</span>',
