@@ -165,7 +165,7 @@ if($_SESSION['userID'])
                   </div>
                 </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item preview-item" href="soon.php">
+                <a class="dropdown-item preview-item" href="companydetail.php">
                   <div class="preview-thumbnail">
                     <div class="preview-icon bg-info">
                       <i class="mdi mdi-city"></i>

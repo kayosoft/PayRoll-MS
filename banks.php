@@ -95,8 +95,8 @@
                   <h6 class="m-0 font-weight-bold text-primary">Bank Detail</h6>
 
 
-                              <button type="button" class="btn btn-gradient-info btn-icon-text"> Print <i class="mdi mdi-printer btn-icon-append"></i>
-                              </button>
+                              <a class="btn btn-gradient-info btn-icon-text" href="actions/printBanks.php"> Print <i class="mdi mdi-printer btn-icon-append"></i>
+                              </a>
                 </div>
 
                   <div class="container">
