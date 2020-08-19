@@ -123,7 +123,11 @@
   <td><?php echo $row->email;?></td>
   <td><?php echo $row->startDate;?></td>
   <td><?php echo $row->sID;?></td>
-  <td></td>
+  <td>
+    <!-- <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button> -->
+    <a href="editproject.php?id=<?php //echo $row['id']; ?>" class="btn btn-primary btn-xs" ><i class="mdi mdi-pencil"></i></a>
+    <a href="deleteproject.php?id=<?php //echo $row['id']; ?>" class="btn btn-danger btn-xs" ><i class="mdi mdi-delete"></i></a>
+  </td>
 
                       </tr>
                     <?php

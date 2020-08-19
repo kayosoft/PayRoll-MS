@@ -94,8 +94,11 @@
                   <h6 class="m-0 font-weight-bold text-primary">Users</h6>
 
 
-                              <button type="button" class="btn btn-gradient-info btn-icon-text"> Print <i class="mdi mdi-printer btn-icon-append"></i>
+                              <span style="display: inline-block;"><button type="button" class="btn btn-gradient-info btn-icon-text"> Print <i class="mdi mdi-printer btn-icon-append"></i>
                               </button>
+                              <a class="btn btn-gradient-info btn-icon-text" href="#">
+                              <i class="mdi mdi-cached btn-icon-append"></i> Users' Activity Log </a>
+                              </span
                 </div>
 
                   <div class="container">
@@ -207,7 +210,12 @@
   <td><?php echo $row->email;?></td>
   <td><?php echo $row->tellNo;?></td>
   <td><?php echo $row->accessLevel;?></td>
-  <td><a href="##" class="btn btn-gradient-primary btn-icon"><i class="mdi mdi-pencil-outline icon-lg"></i></a></td>
+  <td>
+
+    <!-- <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button> -->
+    <a href="#" class="btn btn-primary btn-xs" ><i class="mdi mdi-pencil"></i></a>
+    <a href="#" class="btn btn-danger btn-xs" ><i class="mdi mdi-delete"></i></a>
+  </td>
 
                       </tr>
                     <?php
