@@ -2,7 +2,7 @@
 include('includes/db_connect.php');
 include('includes/checklogin.php');
 check_login();
-?> ?>
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>

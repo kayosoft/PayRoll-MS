@@ -29,9 +29,9 @@
       $salary=$_POST['salary'];
       
 
-      $query="INSERT  INTO  employees(empNo,firstName,surName,otherName,gender,tellNo,email,NIN,ssNo,DoB,TIN,deptID,bankAccount,bankCode) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+      $query="INSERT  INTO  employees(empNo,firstName,surName,otherName,gender,tellNo,email,NIN,ssNo,DoB,TIN,deptID,bankAccount,bankCode,sID) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
       $stmt = $mysqli->prepare($query);
-      $rc=$stmt->bind_param('ssssssssssssss',$empID,$fname,$sname,$mname,$gender,$contactno,$emailid,$nin,$ssNo,$dob,$tin,$dept,$bankAcc,$bank_name);
+      $rc=$stmt->bind_param('sssssssssssssss',$empID,$fname,$sname,$mname,$gender,$contactno,$emailid,$nin,$ssNo,$dob,$tin,$dept,$bankAcc,$bank_name,$salary);
       $stmt->execute();
       $stmt->close();
       if($rc){
@@ -118,9 +118,9 @@
 
                             <div class="form-row">
                                 <div class="form-date">
-                                    <label for="birth_date" class="form-label required">Date of birth</label>
+                                    <label for="birthday" class="form-label required">Date of birth</label>
                                     <div class="form-date-group">
-                                        <input type="text" name="birth_date" value="01/01/2002" id="birth_date" />
+                                        <input type="text" name="birthday" value="01/01/2002" id="birth_date" />
                                     </div>
                                 </div>
         
@@ -345,8 +345,28 @@
                                     <div class="select-list">
                                         <select name="salary" id="salary">
                                             <option value="">Select salary</option>
-                                            <option value="2">U2</option>
-                                            <option value="3">U3</option>
+                                            <?php   
+    
+    $rslt="select * from salary";
+    $stmt= $mysqli->prepare($rslt) ;
+    //$stmt->bind_param('i',$aid);
+    $stmt->execute() ;
+    $res=$stmt->get_result();
+    
+    while($row=$res->fetch_object())
+          {
+
+
+            ?>
+    
+        <option value="<?php echo $row->sID;?>"><?php echo $row->sID;?></option>
+                                          
+    
+
+                                           
+                                        <?php
+    
+                                         } ?>
                                         </select>
                                     </div>
                                 </div>
@@ -400,7 +420,7 @@
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
         <script>
 $(function() {
-  $('input[name="birth_date"]').daterangepicker({
+  $('input[name="birthday"]').daterangepicker({
     singleDatePicker: true,
     showDropdowns: true,
     minYear: 1970,
