@@ -4,28 +4,7 @@
     include('includes/checklogin.php');
     check_login();
 
-    if(isset($_POST['addSalary']))
-      {
-
-      $sID=$_POST['sID'];
-      $salaryScale=$_POST['salaryScale'];
-      $salaryStep=$_POST['salaryStep'];
-      $amount=$_POST['amount'];
-      $allowance=$_POST['allowance'];
-      
-      
-
-      $query="INSERT  INTO  salary(sID,salaryScale,salaryStep,basicSalary,A1) values(?,?,?,?,?)";
-      $stmt = $mysqli->prepare($query);
-      $rc=$stmt->bind_param('sssii',$sID,$salaryScale,$salaryStep,$amount,$allowance);
-      $stmt->execute();
-      $stmt->close();
-      if($rc){
-
-
-      echo"<script>alert('Salary Succssfully added');</script>";
-      }
-      }
+  
     ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -38,7 +17,7 @@
       <meta name="description" content="">
       <meta name="author" content="">
 
-      <title>PayRoll || Salary</title>
+      <title>PayRoll || Transaction</title>
           <!-- plugins:css -->
         <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
         <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
@@ -90,59 +69,42 @@
               <!-- DataTales Example -->
               
               <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Users</h6>
+                <div class="card-header py-3" style="background-color: blue;">
+                  <h6 class="m-0 font-weight-bold text-primary">Monthly Transactions</h6>
 
 
                               <button type="button" class="btn btn-gradient-info btn-icon-text"> Print <i class="mdi mdi-printer btn-icon-append"></i>
                               </button>
-                             
                 </div>
 
                   <div class="container">
-         <div class="row d-flex justify-content-center mt-200"> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"> Add Salary </button> </div> <!-- Modal -->
+         <div class="row d-flex justify-content-center mt-200"> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"> Add a Transaction </button> </div> <!-- Modal -->
          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
              <div class="modal-dialog modal-md modal-dialog-centered" role="document">
                  <div class="modal-content">
                      <div class="modal-header">
-                         <h5 class="modal-title" id="exampleModalLabel">Manage Salary</h5> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+                         <h5 class="modal-title" id="exampleModalLabel">Add Transactions</h5> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
                      </div>
                      <div class="modal-body">
               
                 <div class="col-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    
-                    <form class="forms-sample" method="post" action="salary.php">
+                    <form class="forms-sample" action="departments.php" method="post">
                       <div class="form-group">
-                        <label for="exampleInputName1">Salary ID</label>
-                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Salary ID" name="sID">
+                        <label for="deptCode">Department Code</label>
+                        <input type="text" class="form-control" id="deptCode" placeholder="dept Code" name="deptCode">
                       </div>
                       <div class="form-group">
-                        <label for="exampleInputName1">Salary Scale</label>
-                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Salary Scale" name="salaryScale">
+                        <label for="bankName">Department Name</label>
+                        <input type="text" class="form-control" id="deptName" placeholder="Dept Name" name="deptName">
                       </div>
                       <div class="form-group">
-                        <label for="exampleInputEmail3">Salary Step</label>
-                        <input type="text" class="form-control" id="exampleInputEmail3" placeholder="Salary Step" name="salaryStep">
-                      </div>
-                      <div class="form-group">
-                        <label for="exampleInputPassword4">Basic Salary</label>
-                        <input type="text" class="form-control" id="exampleInputPassword4" placeholder="Basic Salary" name="amount">
-                      </div>
-                      <div class="form-group">
-                        <label for="allowance">Allowance</label>
-                        <select class="form-control" id="allowance" name="allowance">
-
-                          <option value="">Select Allowance</option>
-                          <option value="100000">Transport Allowance</option>
-                          
-                        </select>
+                        <label for="hod">Head of Department</label>
+                        <input type="text" class="form-control" id="email" placeholder="Select HoD" name="deptHoD">
                       </div>
                       
-                      
-                      
-                      <button type="submit" class="btn btn-gradient-primary mr-2" name="addSalary">Submit</button>
+                      <button type="submit" class="btn btn-gradient-primary mr-2" name="addDept">Submit</button>
                       <button class="btn btn-light">Cancel</button>
                     </form>
                   </div>
@@ -163,55 +125,55 @@
                       <thead>
                         <tr>
                           <th>Sno.</th>
-                          <th>Salary ID</th>
-                          <th>Salary Scale</th>
-                          <th>Salary Step</th>
-                          <th>Basic Salary</th>
-                          <th>Allowance(T.P)</th>
+                          <th>DeptCode</th>
+                          <th>Department</th>
+                          <th>HoD</th>
                           <th>Action</th>
                           
                         </tr>
                       </thead>
                       <tfoot>
                         <tr>
-                           <th>Sno.</th>
-                          <th>Salary ID</th>
-                          <th>Salary Scale</th>
-                          <th>Salary Step</th>
-                          <th>Basic Salary</th>
-                          <th>Allowance(T.P)</th>
+                          <th>Sno.</th>
+                          <th>DeptCode</th>
+                          <th>Department</th>
+                          <th>HoD</th>
                           <th>Action</th>
                         </tr>
                       </tfoot>
                       <tbody>
-                        <?php 
-  $aid=$_SESSION['userID'];
-  $ret="SELECT * FROM salary";
-  $stmt= $mysqli->prepare($ret) ;
-  //$stmt->bind_param('i',$aid);
-  $stmt->execute() ;
-  $res=$stmt->get_result();
-  $cnt=1;
-  while($row=$res->fetch_object())
-      {
-        ?>
-  <tr><td><?php echo $cnt;;?></td>
-  <td><?php echo $row->sID;?></td>
-  <td><?php echo $row->salaryScale;?></td>
-  <td><?php echo $row->salaryStep;?></td>
-  <td><?php echo $row->basicSalary;?></td>
-  <td><?php echo $row->A1;?></td>
-  <td>
 
-    <!-- <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button> -->
+
+                        <?php 
+$aid=$_SESSION['userID'];
+$ret="select * from departments";
+$stmt= $mysqli->prepare($ret) ;
+//$stmt->bind_param('i',$aid);
+$stmt->execute() ;
+$res=$stmt->get_result();
+$cnt=1;
+while($row=$res->fetch_object())
+    {
+      ?>
+<tr><td><?php echo $cnt;;?></td>
+<td><?php echo $row->deptID;?></td>
+<td><?php echo $row->deptName;?></td>
+<td><?php echo $row->HoD;?></td>
+<td>
+  
+
+
+  <!-- <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button> -->
     <a href="#" class="btn btn-primary btn-xs" ><i class="mdi mdi-pencil"></i></a>
     <a href="#" class="btn btn-danger btn-xs" ><i class="mdi mdi-delete"></i></a>
-  </td>
+</td>
 
-                      </tr>
-                    <?php
-  $cnt=$cnt+1;
-                     } ?>
+
+                    </tr>
+                  <?php
+$cnt=$cnt+1;
+                   } ?>
+                        
                       </tbody>
                     </table>
                   </div>
@@ -265,9 +227,6 @@
 
       <!-- Page level custom scripts -->
       <script src="assets/sss/js/demo/datatables-demo.js"></script>
-
-
-      
 
     </body>
 

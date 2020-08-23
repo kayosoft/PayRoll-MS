@@ -29,9 +29,9 @@
       $salary=$_POST['salary'];
       
 
-      $query="INSERT  INTO  employees(empNo,firstName,surName,otherName,gender,tellNo,email,NIN,ssNo,DoB,TIN,deptID,bankAccount,bankCode,sID) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+      $query="INSERT  INTO  employees(empNo,firstName,surName,otherName,gender,tellNo,email,NIN,ssNo,DoB,TIN,deptID,jobCode,bankAccount,bankCode,sID) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
       $stmt = $mysqli->prepare($query);
-      $rc=$stmt->bind_param('sssssssssssssss',$empID,$fname,$sname,$mname,$gender,$contactno,$emailid,$nin,$ssNo,$dob,$tin,$dept,$bankAcc,$bank_name,$salary);
+      $rc=$stmt->bind_param('ssssssssssssssss',$empID,$fname,$sname,$mname,$gender,$contactno,$emailid,$nin,$ssNo,$dob,$tin,$dept,$job,$bankAcc,$bank_name,$salary);
       $stmt->execute();
       $stmt->close();
       if($rc){
@@ -57,6 +57,7 @@
         <link rel="stylesheet" href="pages/css/style.css">
 
         <!-- Date picker -->
+        
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
 
@@ -118,9 +119,9 @@
 
                             <div class="form-row">
                                 <div class="form-date">
-                                    <label for="birthday" class="form-label required">Date of birth</label>
+                                    <label for="birth_date" class="form-label required">Date of birth</label>
                                     <div class="form-date-group">
-                                        <input type="text" name="birthday" value="01/01/2002" id="birth_date" />
+                                        <input type="date" name="birth_date" value="01/01/2002" placeholder="01/01/2002" id="birth_date" />
                                     </div>
                                 </div>
         
@@ -221,8 +222,30 @@
                                         <select name="job" id="job">
                                             <option value="">Select Job Title</option>
 
-                                            <option value="A1">Accountant</option>
-                                            <option value="A2">ICT Manager</option>
+                                                            <?php   
+    
+    $job="select * from jobtittles";
+    $stmt= $mysqli->prepare($job) ;
+    //$stmt->bind_param('i',$aid);
+    $stmt->execute() ;
+    $res=$stmt->get_result();
+    
+    while($row=$res->fetch_object())
+          {
+
+
+            ?>
+    
+        <option value="<?php echo $row->jobCode;?>"><?php echo $row->jobTittle;?></option>
+                                          
+    
+
+                                           
+                                        <?php
+    
+                                         } ?>
+
+                                           
                                         </select>
                             </div>
 
@@ -233,14 +256,14 @@
                                             <option value="">Select Dept</option>
 
                                                           <?php   
-    $aid=$_SESSION['userID'];
-    $ret="select * from departments";
-    $stmt= $mysqli->prepare($ret) ;
+   
+    $dept="select * from departments";
+    $stmtDept= $mysqli->prepare($dept) ;
     //$stmt->bind_param('i',$aid);
-    $stmt->execute() ;
-    $res=$stmt->get_result();
+    $stmtDept->execute() ;
+    $resDept=$stmtDept->get_result();
     
-    while($row=$res->fetch_object())
+    while($row=$resDept->fetch_object())
           {
 
 
@@ -292,13 +315,13 @@
                                             
                                                           <?php   
     $aid=$_SESSION['userID'];
-    $ret="select * from banks";
-    $stmt= $mysqli->prepare($ret) ;
+    $bank="select * from banks";
+    $stmtBank= $mysqli->prepare($bank) ;
     //$stmt->bind_param('i',$aid);
-    $stmt->execute() ;
-    $res=$stmt->get_result();
+    $stmtBank->execute() ;
+    $resBank=$stmtBank->get_result();
     
-    while($row=$res->fetch_object())
+    while($row=$resBank->fetch_object())
           {
 
 
@@ -348,12 +371,12 @@
                                             <?php   
     
     $rslt="select * from salary";
-    $stmt= $mysqli->prepare($rslt) ;
+    $stmtRslt= $mysqli->prepare($rslt) ;
     //$stmt->bind_param('i',$aid);
-    $stmt->execute() ;
-    $res=$stmt->get_result();
+    $stmtRslt->execute() ;
+    $resRslt=$stmtRslt->get_result();
     
-    while($row=$res->fetch_object())
+    while($row=$resRslt->fetch_object())
           {
 
 

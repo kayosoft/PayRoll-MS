@@ -9,8 +9,9 @@ if($_SESSION['userID'])
                                 $sql = "SELECT * FROM users WHERE userID='$aid'";
                                 $result = mysqli_query($mysqli,$sql);
                                 $row=mysqli_fetch_array($result);
+                                $level = $row['accessLevel'];
 
-                                if($aid == 1){
+                                if($level == 'System Admin'){
                                  ?> 
                                 
                                 

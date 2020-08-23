@@ -104,9 +104,9 @@
                       </tr>
                     </tfoot>
                     <tbody>
-                      <?php 
+  <?php 
   $aid=$_SESSION['userID'];
-  $ret=$ret="SELECT * FROM employees INNER JOIN salary ON employees.sID=salary.sID INNER JOIN departments ON employees.deptID=departments.deptID INNER JOIN jobTittles ON employees.jobCode=jobTittles.jobCode";
+  $ret="SELECT * FROM employees INNER JOIN salary ON employees.sID=salary.sID";
   $stmt= $mysqli->prepare($ret) ;
   //$stmt->bind_param('i',$aid);
   $stmt->execute() ;
@@ -118,12 +118,13 @@
   <tr><td><?php echo $cnt;;?></td>
   <td><?php echo $row->empNo;?></td>
   <td><?php echo $row->firstName;?> &nbsp;&nbsp;<?php echo $row->surName;?></td>
-  <td><?php echo $row->jobTittle;?></td>
-  <td><?php echo $row->deptName;?></td>
+  <td><?php echo $row->jobCode;?></td>
+  <td><?php echo $row->deptID;?></td>
   <td><?php echo $row->email;?></td>
   <td><?php echo $row->startDate;?></td>
-  <td><?php echo $row->basicSalary;?></td>
   
+  <td><?php echo $row->basicSalary;?></td>
+
   <td>
     <!-- <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button> -->
     <a href="editproject.php?id=<?php //echo $row['id']; ?>" class="btn btn-primary btn-xs" ><i class="mdi mdi-pencil"></i></a>
