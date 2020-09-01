@@ -27,11 +27,19 @@
       // $start_date = $_POST['start_date'];
       // $profile = $_POST['profile'];
       $salary=$_POST['salary'];
+      $loanID = "LN".$empID;
+      $loanAmount = '0';
+      $loanDeduction = '0';
+      $loanBalance = '0';
       
+      $qry="INSERT  INTO  loans(loanID,empNo,loanAmount,loanDeduction,loanBalance) values(?,?,?,?,?)";
+      $loandt = $mysqli->prepare($qry);
+      $rslt=$loandt->bind_param('sssss',$loanID,$empID,$loanAmount,$loanDeduction,$loanBalance);
+      $loandt->execute();
 
-      $query="INSERT  INTO  employees(empNo,firstName,surName,otherName,gender,tellNo,email,NIN,ssNo,DoB,TIN,deptID,jobCode,bankAccount,bankCode,sID) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+      $query="INSERT  INTO  employees(empNo,firstName,surName,otherName,gender,tellNo,email,NIN,ssNo,DoB,TIN,deptID,jobCode,bankAccount,bankCode,sID,loanID) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
       $stmt = $mysqli->prepare($query);
-      $rc=$stmt->bind_param('ssssssssssssssss',$empID,$fname,$sname,$mname,$gender,$contactno,$emailid,$nin,$ssNo,$dob,$tin,$dept,$job,$bankAcc,$bank_name,$salary);
+      $rc=$stmt->bind_param('sssssssssssssssss',$empID,$fname,$sname,$mname,$gender,$contactno,$emailid,$nin,$ssNo,$dob,$tin,$dept,$job,$bankAcc,$bank_name,$salary,$loanID);
       $stmt->execute();
       $stmt->close();
       if($rc){
@@ -91,7 +99,7 @@
                 <div class="content-wrapper">
 
             <div class="container">
-                <h2>REGISTER EMPLYEE ACCOUNT</h2>
+                <h2>REGISTER EMPLOYEE ACCOUNT</h2>
 
                 <form id="signup-form" class="signup-form" method="post" action="register.php">
                         <h3>

@@ -106,7 +106,7 @@
                     <tbody>
                       <?php 
   $aid=$_SESSION['userID'];
-  $ret=$ret="SELECT * FROM employees INNER JOIN salary ON employees.sID=salary.sID INNER JOIN departments ON employees.deptID=departments.deptID INNER JOIN jobTittles ON employees.jobCode=jobTittles.jobCode";
+ $ret="SELECT * FROM employees INNER JOIN salary ON employees.sID=salary.sID INNER JOIN departments ON employees.deptID=departments.deptID INNER JOIN jobTittles ON employees.jobCode=jobTittles.jobCode";
   $stmt= $mysqli->prepare($ret) ;
   //$stmt->bind_param('i',$aid);
   $stmt->execute() ;

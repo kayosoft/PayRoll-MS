@@ -162,6 +162,50 @@ if ($rslt->num_rows > 0) {
                       }
 } else {
   echo "0 results";
+  ?>
+   <label for="compName">Company Name</label>
+                        <input type="text" class="form-control" id="compName" placeholder="Company Name"  name="compName">
+                      </div>
+                      <div class="form-group">
+                        <label for="postalAddress">Postal Address</label>
+                        <input type="text" class="form-control" id="pstAddress" placeholder="Postal Address" name="postalAddress" >
+                      </div>
+                      <div class="form-group">
+                        <label for="compEmail">Email address</label>
+                        <input type="email" class="form-control" id="email" placeholder="Email" name="compEmail" >
+                      </div>
+                      <div class="form-group">
+                        <label for="tell">Tellephone</label>
+                        <input type="text" class="form-control" id="tell" placeholder="0435676679" name="tell" >
+                      </div>
+                      <div class="form-group">
+                        <label for="city">City</label>
+                        <select class="form-control" id="city" name="city">
+                          <option value="Kampala">Kampala</option>
+                          <option value="Lira">Lira</option>
+                          <option value="Mbarara">Mbarara</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="tin">TIN</label>
+                        <input type="text" class="form-control" id="tin" placeholder="TIN" name="tin" >
+                      </div>
+                      <div class="form-group">
+                        <label>Company Logo</label>
+                        <input type="file" name="img[]" class="file-upload-default">
+                        <div class="input-group col-xs-12">
+                          <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
+                          <span class="input-group-append">
+                            <button class="file-upload-browse btn btn-gradient-primary" type="button">Upload</button>
+                          </span>
+                        </div>
+                      </div>
+                      
+                      <div class="form-group">
+                        <label for="descpt">Company Description</label>
+                        <textarea class="form-control" id="exampleTextarea1" rows="4" name="descpt"></textarea>
+                      </div>
+  <?php
 }
 ?>
                       <button type="submit" class="btn btn-gradient-primary mr-2" name="update">Update</button>

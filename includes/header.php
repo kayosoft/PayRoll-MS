@@ -48,9 +48,9 @@ if($_SESSION['userID'])
                 </div>
               </a>
               <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="logs.php">
                   <i class="mdi mdi-cached mr-2 text-success"></i> Activity Log </a>
-                  <a class="dropdown-item" href="#">
+                  <a class="dropdown-item" href="account.php">
                   <i class="mdi mdi-account mr-2 text-success"></i> My Account </a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="logout.php">

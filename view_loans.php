@@ -3,78 +3,6 @@
   include('includes/db_connect.php');
   include('includes/checklogin.php');
   check_login();
-
-
-if (isset($_POST['gen'])) {
-
-  $ret="SELECT * FROM employees INNER JOIN salary ON employees.sID=salary.sID INNER JOIN departments ON employees.deptID=departments.deptID INNER JOIN jobTittles ON employees.jobCode=jobTittles.jobCode INNER JOIN banks ON employees.bankCode=banks.bankCode INNER JOIN loans ON employees.loanID=loans.loanID";
-  $stmt=$mysqli->prepare($ret);
-  //$stmt->bind_param('i',$aid);
-  $stmt->execute() ;
-  $res=$stmt->get_result();
-  $cnt=1;
-  while($row=$res->fetch_object())
-      {
-        
-  
-  $empID = $row->empNo;
-  $name = $row->firstName."  " .$row->otherName."  ".$row->surName;
-  $gender = $row->gender;
-  $email = $row->email;
-  
-  $job = $row->jobTittle;
-  $dept = $row->deptName;
-  $ssNo = $row->ssNo;
-  $tin = $row->TIN;
-  $bankAcc = $row->bankAccount;
-  $bankName = $row->bankName;
-  $salaryScale = $row->salaryScale;
-  $salaryStep = $row->salaryStep;
-  $salary = $row->basicSalary;
-  $allowance = $row->A1;
-  $loan = $row->loanAmount;
-  $advance = $row->advanceAmount;
-  $totalEarning = $salary + $allowance;
-  $totalDeduction = $loan + $advance;
-  $netPay = $totalEarning - $totalDeduction;
-
-   //echo $loan;
-  // echo $name;
-  // echo $salary;
-  // echo $empID ."my ID";
-  // echo $gender;
-  // echo $email;
-  // echo $row->empNo;
-
-  $detail = "SELECT * FROM payroll WHERE empNo='$empID'";
-$rslt = $mysqli->query($detail);
-
-if ($rslt->num_rows > 0) {
-   
-  //echo"<script>alert('PayRoll already generated');</script>";
-
-  
-    }else{
-
-       $query="INSERT  INTO  payroll(empNo,empName,deptName,jobTitle,ssNo,TIN,bankAccount,bankCode,salaryScale,salaryStep,salaryAmount,actingAllowance,loan,advance,totalEarning,totalDeduction,netPay) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-      $stmt = $mysqli->prepare($query);
-      $rc=$stmt->bind_param('sssssssssssssssss',$empID,$name,$dept,$job,$ssNo,$tin,$bankAcc,$bankName,$salaryScale,$salaryStep,$salary,$allowance,$loan,$advance,$totalEarning,$totalDeduction,$netPay);
-      $stmt->execute();
-      $stmt->close();
-      if($rc){
-
-
-      echo"<script>alert('');</script>";
-      }else{}
-
-
-    }
-
-
-    }
-
-  
-}
   ?>
   <!DOCTYPE html>
   <html lang="en">
@@ -87,7 +15,7 @@ if ($rslt->num_rows > 0) {
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>PayRoll</title>
+    <title>Loan</title>
         <!-- plugins:css -->
       <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
       <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
@@ -140,18 +68,76 @@ if ($rslt->num_rows > 0) {
             
             <div class="card shadow mb-4">
               <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">PayRoll</h6>
-               
-                          <form action="payroll.php" method="post">
-                            <button type="button" class="btn btn-gradient-info btn-icon-text"> View <i class="mdi mdi-printer btn-icon-append"></i>
+                <h6 class="m-0 font-weight-bold text-primary">Loan Data</h6>
+
+
+                            <button type="button" class="btn btn-gradient-info btn-icon-text"> Print <i class="mdi mdi-printer btn-icon-append"></i>
                             </button>
-                            
-                               <input type="submit" class="btn btn-gradient-info btn-icon-text" name="gen" value="Generate PayRoll"> 
-                            
-                            </form>
               </div>
               <div class="card-body">
-                
+                <div class="table-responsive">
+                  <table class="table table-bordered table table-striped table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                      <tr>
+                        <th>Sno.</th>
+                        <th>Loan ID</th>
+                        <th>Emp No.</th>
+                        <th>Loan Amount</th>
+                        <th>Loan Deduction</th>
+                        <th>Loan Additiont</th>
+                        
+                        
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tfoot>
+                      <tr>
+                        <th>Sno.</th>
+                        <th>Loan ID</th>
+                        <th>Emp No.</th>
+                        <th>Loan Amount</th>
+                        <th>Loan Deduction</th>
+                        <th>Loan Additiont</th>
+                        
+                        
+                        <th>Action</th>
+                      </tr>
+                    </tfoot>
+                    <tbody>
+                      <?php 
+  $aid=$_SESSION['userID'];
+ $ret="SELECT * FROM loans WHERE loanAmount != '0' ";
+  $stmt= $mysqli->prepare($ret) ;
+  //$stmt->bind_param('i',$aid);
+  $stmt->execute() ;
+  $res=$stmt->get_result();
+  $cnt=1;
+  while($row=$res->fetch_object())
+      {
+        ?>
+  <tr><td><?php echo $cnt;;?></td>
+    <td><?php echo $row->loanID;?></td>
+  <td><?php echo $row->empNo;?></td>
+  <td><?php echo $row->loanAmount;?></td>
+  <td><?php echo $row->loanDeduction;?></td>
+  <td><?php echo $row->loanAddition;?></td>
+  
+ 
+  
+  <td>
+    <!-- <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button> -->
+    <a href="editproject.php?id=<?php //echo $row['id']; ?>" class="btn btn-primary btn-xs" ><i class="mdi mdi-pencil"></i></a>
+    <a href="deleteproject.php?id=<?php //echo $row['id']; ?>" class="btn btn-danger btn-xs" ><i class="mdi mdi-delete"></i></a>
+  </td>
+
+                      </tr>
+                    <?php
+  $cnt=$cnt+1;
+                     } ?>
+                     
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
 

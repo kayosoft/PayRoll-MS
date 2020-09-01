@@ -51,7 +51,7 @@ if($level == 'System Admin'){
               </a>
               <div class="collapse" id="loan">
                 <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="soon.php"> View Loans </a></li>
+                  <li class="nav-item"> <a class="nav-link" href="view_loans.php"> View Loans </a></li>
                   <li class="nav-item"> <a class="nav-link" href="soon.php"> Manage Loans </a></li>
                 </ul>
               </div>

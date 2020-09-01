@@ -86,8 +86,9 @@
                          <h5 class="modal-title" id="exampleModalLabel">Add Transactions</h5> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
                      </div>
                      <div class="modal-body">
+                      <h3>Comming Soon</h3>
               
-                <div class="col-12 grid-margin stretch-card">
+                <!-- <div class="col-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
                     <form class="forms-sample" action="departments.php" method="post">
@@ -109,7 +110,7 @@
                     </form>
                   </div>
                 </div>
-              </div>
+              </div> -->
               
 
                  </div>
@@ -125,9 +126,11 @@
                       <thead>
                         <tr>
                           <th>Sno.</th>
-                          <th>DeptCode</th>
-                          <th>Department</th>
-                          <th>HoD</th>
+                          <th>Transaction ID</th>
+                          <th>Title</th>
+                          <th>Description</th>
+                          <th>Employee Name</th>
+                          <th>Date/Time</th>
                           <th>Action</th>
                           
                         </tr>
@@ -135,9 +138,11 @@
                       <tfoot>
                         <tr>
                           <th>Sno.</th>
-                          <th>DeptCode</th>
-                          <th>Department</th>
-                          <th>HoD</th>
+                          <th>Transaction ID</th>
+                          <th>Title</th>
+                          <th>Description</th>
+                          <th>Employee Name</th>
+                          <th>Date/Time</th>
                           <th>Action</th>
                         </tr>
                       </tfoot>
@@ -146,7 +151,7 @@
 
                         <?php 
 $aid=$_SESSION['userID'];
-$ret="select * from departments";
+$ret="select * from transactions";
 $stmt= $mysqli->prepare($ret) ;
 //$stmt->bind_param('i',$aid);
 $stmt->execute() ;
